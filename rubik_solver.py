@@ -40,3 +40,32 @@ class Rubik_cube():
                 queue.append((new_cube, moves + [move]))
 
         return None
+def print_solution(self, solution):
+    decode_step = {
+        "U": "Arriba derecha (U)",
+        "U'": "Arriba izquierda (U')",
+        "D": "Abajo derecha (D)",
+        "D'": "Abajo izquierda (D')",
+        "F": "Frente derecha (F)",
+        "F'": "Frente izquierda (F')",
+        "B": "Atrás derecha (B)",
+        "B'": "Atrás izquierda (B')",
+        "R": "Derecha arriba (R)",
+        "R'": "Derecha abajo (R')",
+        "L": "Izquierda arriba (L)",
+        "L'": "Izquierda abajo (L')",
+        "E": "Medio horizontal (E)",
+        "E'": "Medio horizontal invertido (E')",
+        "S": "Medio vertical (S)",
+        "S'": "Medio vertical invertido (S')",
+        "M": "Medio central (M)",
+        "M'": "Medio central invertido (M')"
+    }
+
+    if solution:
+        print("Secuencia de pasos necesarios para resolver el cubo:")
+        for i, step in enumerate(solution, start=1):
+            print(f"Paso {i}: {decode_step.get(step, 'Movimiento desconocido')}")
+        print(f"Cantidad de pasos requeridos para la resolución: {len(solution)}")
+    else:
+        print("No se encontró solución.")
