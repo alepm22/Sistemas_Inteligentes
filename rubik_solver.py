@@ -25,3 +25,18 @@ class Rubik_cube():
             print("El archivo no existe")
         except ValueError as ve:
             print("Error al cargar la configuración: ", ve)
+
+    def bfs_solve(self):
+        queue = deque([(self, [])])
+        while queue:
+            current_cube, moves = queue.popleft()
+
+            if current_cube.is_goal_state():
+                return moves
+
+            for move in current_cube.valid_moves():
+                new_cube = copy.deepcopy(current_cube)
+                new_cube.action(move)
+                queue.append((new_cube, moves + [move]))
+
+        return None
